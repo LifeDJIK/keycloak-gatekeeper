@@ -104,7 +104,7 @@ func (r *oauthProxy) writeStateParameterCookie(req *http.Request, w http.Respons
 	uuid := uuid.NewV4().String()
 	if req.Header.Get("X-Forwarded-Host") != "" {
 		requestURI := base64.StdEncoding.EncodeToString([]byte(req.Header.Get("X-Forwarded-Prefix")))
-	} else {}
+	} else {
 		requestURI := base64.StdEncoding.EncodeToString([]byte(req.URL.RequestURI()))
 	}
 	r.dropCookie(w, req.Host, requestURICookie, requestURI, 0)
